@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { isAdmin } from '@/lib/admin'
-import { CV_BUCKET, getSupabase } from '@/lib/supabase'
+import { CV_BUCKET, getSupabase, supabaseGreska } from '@/lib/supabase'
 import { POSLOVNICE, eur } from '@/lib/site'
 import { odjava, prijava, spremiCijenu } from './actions'
 
@@ -35,7 +35,7 @@ export default async function Admin({ searchParams }) {
       <section className="section page-plain admin">
         <div className="container narrow">
           <h1>Administracija</h1>
-          <p className="notice">Supabase nije spojen (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY).</p>
+          <p className="notice">Supabase nije spojen. {supabaseGreska()}</p>
         </div>
       </section>
     )
