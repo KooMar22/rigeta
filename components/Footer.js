@@ -31,6 +31,7 @@ export default function Footer() {
           <ul>
             <li><Link href="/cjenici">Maloprodajni cjenici</Link></li>
             <li><Link href="/o-nama#eu-projekti">EU projekti</Link></li>
+            <li><Link href="/politika-sigurnosti-hrane">Politika sigurnosti hrane</Link></li>
             <li><Link href="/pravila-privatnosti">Pravila privatnosti</Link></li>
             <li><Link href="/kolacici">Politika kolačića</Link></li>
             <li><CookieSettingsButton /></li>

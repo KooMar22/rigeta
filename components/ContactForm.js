@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { PREDMETI_UPITA } from '@/lib/site'
 
 export default function ContactForm() {
   const [stanje, setStanje] = useState({ status: 'mirovanje' })
@@ -37,10 +38,23 @@ export default function ContactForm() {
           <input name="email" type="email" required maxLength={160} autoComplete="email" />
         </label>
       </div>
-      <label>
-        Telefon
-        <input name="telefon" type="tel" maxLength={40} autoComplete="tel" />
-      </label>
+      <div className="form-row">
+        <label>
+          Telefon
+          <input name="telefon" type="tel" maxLength={40} autoComplete="tel" />
+        </label>
+        <label>
+          Predmet upita *
+          <select name="predmet" required defaultValue="">
+            <option value="" disabled>
+              Odaberite predmet
+            </option>
+            {PREDMETI_UPITA.map((p) => (
+              <option key={p}>{p}</option>
+            ))}
+          </select>
+        </label>
+      </div>
       <label>
         Poruka *
         <textarea name="poruka" rows={6} required maxLength={4000} />
@@ -50,7 +64,7 @@ export default function ContactForm() {
       <label className="checkbox">
         <input type="checkbox" name="privola" value="da" required />
         <span>
-          Suglasan/na sam s obradom podataka u svrhu odgovora na upit, kako je opisano u{' '}
+          Slažem se s obradom osobnih podataka u svrhu odgovora na moj upit, kako je opisano u{' '}
           <Link href="/pravila-privatnosti">pravilima privatnosti</Link>. *
         </span>
       </label>

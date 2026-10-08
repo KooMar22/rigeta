@@ -473,8 +473,89 @@ img {
   border-color: var(--red);
 }
 
+.form select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid #cfd4d8;
+  border-radius: 3px;
+  background: #fff;
+  color: var(--navy);
+  font: inherit;
+  font-size: 16px;
+}
+
+.form select:focus {
+  outline: 2px solid var(--red);
+  outline-offset: 1px;
+  border-color: var(--red);
+}
+
 .form textarea {
   resize: vertical;
+}
+
+/* ---------- harmonika (poslovnice) ---------- */
+
+.accordion details {
+  border-bottom: 1px solid var(--line);
+}
+
+.accordion summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-head), sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion summary::after {
+  content: '';
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--red);
+  border-bottom: 2px solid var(--red);
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+
+.accordion details[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+.accordion-body {
+  padding: 0 0 20px;
+}
+
+.accordion-body p {
+  margin-bottom: 0.6em;
+}
+
+.plain-list {
+  list-style: none;
+  margin: 0 0 1.2em;
+  padding: 0;
+}
+
+.photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  border: 2px dashed #c9a24b;
+  border-radius: 3px;
+  background: #fffdf5;
 }
 
 .form label.checkbox {

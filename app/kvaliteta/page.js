@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Hero, { PageTitle } from '@/components/Hero'
 import { img } from '@/lib/site'
 
@@ -25,9 +26,9 @@ export default function Kvaliteta() {
               da smo certificirani od strane vanjskih agencija za kvalitetu po IFS Food, već i osiguravamo kontinuirane
               edukacije naših djelatnika vezane za kvalitetu, higijenu i zaštitu na radu.
             </p>
-            <a className="btn btn-outline" href={img('politika_sigurnosti_hrane.pdf')} target="_blank" rel="noopener">
-              Politika sigurnosti hrane (PDF)
-            </a>
+            <Link className="btn btn-outline" href="/politika-sigurnosti-hrane">
+              Politika sigurnosti hrane
+            </Link>
           </div>
           <img src={img('meso_zdjelica.jpg')} alt="" loading="lazy" />
         </div>

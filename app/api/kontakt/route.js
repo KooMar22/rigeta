@@ -1,4 +1,5 @@
 import { getSupabase } from '@/lib/supabase'
+import { PREDMETI_UPITA } from '@/lib/site'
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const tekst = (v, max) => String(v ?? '').trim().slice(0, max)
@@ -17,11 +18,17 @@ export async function POST(request) {
   const ime = tekst(podaci.ime, 120)
   const email = tekst(podaci.email, 160)
   const telefon = tekst(podaci.telefon, 40)
-  const poruka = tekst(podaci.poruka, 4000)
+  const predmet = tekst(podaci.predmet, 60)
+  const tekstPoruke = tekst(podaci.poruka, 4000)
 
-  if (!ime || !poruka || !EMAIL.test(email)) {
+  if (!ime || !tekstPoruke || !EMAIL.test(email)) {
     return Response.json({ greska: 'Molimo ispunite ime, ispravan e-mail i poruku.' }, { status: 400 })
   }
+  if (!PREDMETI_UPITA.includes(predmet)) {
+    return Response.json({ greska: 'Molimo odaberite predmet upita.' }, { status: 400 })
+  }
+  // predmet se sprema kao prefiks poruke, pa tablica `poruke` ne treba novi stupac
+  const poruka = `[${predmet}] ${tekstPoruke}`
   if (podaci.privola !== 'da') {
     return Response.json({ greska: 'Potrebna je suglasnost s pravilima privatnosti.' }, { status: 400 })
   }
