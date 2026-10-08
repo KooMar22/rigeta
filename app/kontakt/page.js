@@ -1,7 +1,7 @@
 import Hero, { PageTitle } from '@/components/Hero'
 import ContactForm from '@/components/ContactForm'
 import MapEmbed from '@/components/MapEmbed'
-import { POSLOVNICE, TVRTKA } from '@/lib/site'
+import { POSLOVNICE, TVRTKA, telHref } from '@/lib/site'
 
 export const metadata = { title: 'Kontakt' }
 
@@ -25,9 +25,10 @@ export default function Kontakt() {
               <a href={`mailto:${TVRTKA.email}`}>{TVRTKA.email}</a>
             </p>
             <p>
-              Tel: {TVRTKA.telefoni.map((t) => (
+              Tel:{' '}
+              {TVRTKA.telefoni.map((t) => (
                 <span key={t}>
-                  {t}
+                  <a href={telHref(t)}>{t}</a>
                   <br />
                 </span>
               ))}
@@ -45,9 +46,11 @@ export default function Kontakt() {
           <h2>Poslovnice</h2>
           <div className="stores">
             {POSLOVNICE.map((p) => (
-              <div key={p.slug}>
+              <div key={p.slug} className="store-card">
                 <h4>{p.adresa}</h4>
-                <p>Tel: {p.tel}</p>
+                <p>
+                  Tel: <a href={telHref(p.tel)}>{p.tel}</a>
+                </p>
                 <ul>
                   {p.radnoVrijeme.map((r) => (
                     <li key={r}>{r}</li>

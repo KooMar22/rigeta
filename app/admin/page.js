@@ -77,7 +77,7 @@ export default async function Admin({ searchParams }) {
           ))}
         </div>
         <div className="table-wrap">
-          <table>
+          <table className="responsive">
             <thead>
               <tr>
                 <th>Šifra</th>
@@ -90,17 +90,17 @@ export default async function Admin({ searchParams }) {
             <tbody>
               {(stavke.data ?? []).map((s) => (
                 <tr key={s.id}>
-                  <td>{s.sifra}</td>
-                  <td className="wrap">{s.naziv}</td>
-                  <td className="num">{eur(s.mpc)}</td>
-                  <td>
+                  <td data-label="Šifra">{s.sifra}</td>
+                  <td className="wrap title">{s.naziv}</td>
+                  <td className="num" data-label="Trenutna MPC">{eur(s.mpc)}</td>
+                  <td data-label="Nova MPC (€)">
                     <form action={spremiCijenu} className="inline-form">
                       <input type="hidden" name="id" value={s.id} />
                       <input type="number" name="mpc" step="0.01" min="0.01" defaultValue={Number(s.mpc).toFixed(2)} required />
                       <button className="btn btn-small">Spremi</button>
                     </form>
                   </td>
-                  <td>{datumVrijeme(s.azurirano)}</td>
+                  <td data-label="Zadnja izmjena">{datumVrijeme(s.azurirano)}</td>
                 </tr>
               ))}
             </tbody>

@@ -40,7 +40,7 @@ export default async function Cjenici() {
               </div>
             </div>
             <div className="table-wrap">
-              <table>
+              <table className="responsive">
                 <thead>
                   <tr>
                     <th>Šifra</th>
@@ -56,20 +56,20 @@ export default async function Cjenici() {
                 <tbody>
                   {stavke.map((s) => (
                     <tr key={s.id}>
-                      <td>{s.sifra}</td>
-                      <td className="wrap">{s.naziv}</td>
-                      <td>{s.kategorija}</td>
-                      <td className="num">
+                      <td data-label="Šifra">{s.sifra}</td>
+                      <td className="wrap title">{s.naziv}</td>
+                      <td data-label="Kategorija">{s.kategorija}</td>
+                      <td className="num" data-label="Neto količina">
                         {String(s.neto_kolicina).replace('.', ',')} {s.jedinica_mjere}
                       </td>
-                      <td className="num">
+                      <td className="num" data-label="MPC">
                         <strong>{eur(s.mpc)}</strong>
                       </td>
-                      <td className="num">
+                      <td className="num" data-label="Cijena po jed. mjere">
                         {eur(s.cijena_po_jm)}/{s.jedinica_mjere}
                       </td>
-                      <td className="num">{eur(s.najniza_30d)}</td>
-                      <td className="num">{eur(s.sidrena_cijena)}</td>
+                      <td className="num" data-label="Najniža u 30 dana">{eur(s.najniza_30d)}</td>
+                      <td className="num" data-label="Sidrena cijena">{eur(s.sidrena_cijena)}</td>
                     </tr>
                   ))}
                 </tbody>

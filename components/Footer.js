@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { POSLOVNICE, TVRTKA, img } from '@/lib/site'
+import { POSLOVNICE, TVRTKA, img, telHref } from '@/lib/site'
 import { CookieSettingsButton } from './CookieBanner'
 
 export default function Footer() {
@@ -15,7 +15,7 @@ export default function Footer() {
             <br />
             <a href={`mailto:${TVRTKA.email}`}>{TVRTKA.email}</a>
             <br />
-            Tel: {TVRTKA.telefoni[0]}
+            Tel: <a href={telHref(TVRTKA.telefoni[0])}>{TVRTKA.telefoni[0]}</a>
           </p>
         </div>
         <div>

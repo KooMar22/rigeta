@@ -20,7 +20,7 @@ export default function Kolacici() {
 
         <h3>Što koristimo na ovoj stranici?</h3>
         <div className="table-wrap" style={{ marginBottom: '1.4em' }}>
-          <table>
+          <table className="responsive">
             <thead>
               <tr>
                 <th>Naziv</th>
@@ -31,19 +31,19 @@ export default function Kolacici() {
             </thead>
             <tbody>
               <tr>
-                <td>rigeta-kolacici</td>
-                <td>Nužni (lokalna pohrana)</td>
-                <td className="wrap">Pamti Vaš odabir o kolačićima kako Vas ne bismo ponovno pitali.</td>
-                <td>Do brisanja</td>
+                <td className="title">rigeta-kolacici</td>
+                <td data-label="Vrsta">Nužni (lokalna pohrana)</td>
+                <td className="wrap" data-label="Svrha">Pamti Vaš odabir o kolačićima kako Vas ne bismo ponovno pitali.</td>
+                <td data-label="Trajanje">Do brisanja</td>
               </tr>
               <tr>
-                <td>Google Maps</td>
-                <td>Vanjski sadržaj</td>
-                <td className="wrap">
+                <td className="title">Google Maps</td>
+                <td data-label="Vrsta">Vanjski sadržaj</td>
+                <td className="wrap" data-label="Svrha">
                   Prikaz karte na stranici Kontakt. Učitava se tek nakon Vašeg pristanka; Google pritom može postaviti
                   vlastite kolačiće prema svojim pravilima.
                 </td>
-                <td>Prema pravilima Googlea</td>
+                <td data-label="Trajanje">Prema pravilima Googlea</td>
               </tr>
             </tbody>
           </table>

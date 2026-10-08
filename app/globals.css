@@ -830,9 +830,40 @@ tr:last-child td {
     font-size: 1.7rem;
   }
 
+  .site-nav li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .site-nav a {
+    display: block;
+    padding: 18px;
+  }
+
   .cards,
   .stores {
     grid-template-columns: 1fr 1fr;
+  }
+
+  /* neparna zadnja kartica ne ostaje sama u pola širine */
+  .cards > .eu-card:last-child:nth-child(odd),
+  .stores > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  /* kartice proizvoda ostaju u tri stupca, samo manje */
+  .cards.products {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .cards.products .overlay {
+    font-size: 1.15rem;
+    padding: 16px;
+  }
+
+  .cards.products .overlay img {
+    height: 44px;
   }
 
   .footer-grid {
@@ -841,8 +872,146 @@ tr:last-child td {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --header-h: 66px;
+  }
+
   body {
     font-size: 17px;
+  }
+
+  .site-header {
+    padding: 6px 12px 6px 16px;
+  }
+
+  .site-logo img {
+    height: 52px;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .page-plain {
+    padding-top: calc(var(--header-h) + 32px);
+  }
+
+  /* niže, vodoravne pločice umjesto tri visoke jedne ispod druge */
+  .cards.products {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card {
+    aspect-ratio: 16 / 9;
+  }
+
+  .cards.products .overlay {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    font-size: 1.35rem;
+  }
+
+  .store-card {
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--cream);
+  }
+
+  .store-card p {
+    margin-bottom: 0.6em;
+  }
+
+  /* tablice postaju kartice: svaki red je blok, a naziv stupca stoji uz vrijednost */
+  .table-wrap:has(table.responsive) {
+    border: 0;
+    background: none;
+    overflow: visible;
+  }
+
+  table.responsive thead {
+    display: none;
+  }
+
+  table.responsive,
+  table.responsive tbody {
+    display: block;
+  }
+
+  /* flex-stupac da naziv (order: -1) dođe na vrh kartice iako u tablici nije prvi stupac */
+  table.responsive tr {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: #fff;
+  }
+
+  table.responsive td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 4px 0;
+    border: 0;
+    white-space: normal;
+    min-width: 0;
+    text-align: right;
+  }
+
+  table.responsive td::before {
+    content: attr(data-label);
+    flex: none;
+    font-weight: 400;
+    color: var(--navy);
+    text-align: left;
+  }
+
+  table.responsive td.title {
+    display: block;
+    order: -1;
+    padding-bottom: 8px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-head), sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-align: left;
+  }
+
+  table.responsive td.title::before {
+    display: none;
+  }
+
+  .price-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .price-actions .btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .tabs a {
+    flex: 1;
+    text-align: center;
+  }
+
+  .admin .inline-form input[type='password'] {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+
+  .footer-grid {
+    gap: 28px;
+    padding-top: 40px;
+    padding-bottom: 28px;
   }
 
   .section {
@@ -890,16 +1059,41 @@ tr:last-child td {
     height: 80px;
   }
 
+  .cookie-banner {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
   .cookie-inner {
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  /* dva jednako istaknuta gumba u redu, "Postavke" ispod njih */
+  .cookie-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 
   .cookie-actions .btn {
-    flex: 1;
+    padding: 10px 8px;
+    font-size: 0.9rem;
     text-align: center;
-    padding: 12px 14px;
+    white-space: nowrap;
+  }
+
+  .cookie-actions .btn:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .cookie-actions .btn-ghost {
+    order: 3;
+    padding: 4px;
   }
 
   .map {

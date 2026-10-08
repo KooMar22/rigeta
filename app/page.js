@@ -48,7 +48,7 @@ export default function Naslovnica() {
             <h2>Proizvodi</h2>
             <p>Temelj svakog kvalitetnog proizvoda jest kvaliteta sirovine koja se koristi.</p>
           </div>
-          <div className="cards" style={{ marginTop: 36 }}>
+          <div className="cards products" style={{ marginTop: 36 }}>
             {PROIZVODI.map((p) => (
               <Link key={p.sidro} href={`/proizvodi#${p.sidro}`} className="product-card">
                 <img className="photo" src={img(p.slika)} alt="" loading="lazy" />
